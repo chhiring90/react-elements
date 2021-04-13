@@ -1,4 +1,4 @@
-.btn {
+.button {
   display: inline-block;
   font-weight: 400;
   line-height: 1.5;
@@ -17,8 +17,17 @@
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  font-family: inherit;
+  font-weight: 600;
 
-  &Primary {
-    background-color: orange;
+  &:focus {
+    outline: 1px dashed $secondary;
+  }
+
+  &--primary {
+    background-color: $primary;
+    &:hover {
+      background-color: darken($primary, 5%);
+    }
   }
 }

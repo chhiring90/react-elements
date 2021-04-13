@@ -1,8 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
-*,
-*:before,
-*:after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+// Abstract
+
+@import 'sass/abstract/variable';
+@import 'sass/abstract/functions';
+@import 'sass/abstract/mixins';
+
+//  Base
+@import 'sass/base/reset';
+@import 'sass/base/typography';
+
+// Components
+@import 'sass/components/button';
+@import 'sass/components/carousel';
+@import 'sass/components/dropdown';
+
+// Layout
+@import 'sass/layout/grid';
+@import 'sass/layout/header';
+@import 'sass/layout/footer';
+@import 'sass/layout/navigation';
+@import 'sass/layout/forms';
+@import 'sass/layout/sidebar';
+
+// Pages
+@import 'sass/pages/home';
+
+// Themes
+@import 'sass/themes/defaultmode';
