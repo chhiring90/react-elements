@@ -31,13 +31,26 @@ class Dropdown extends React.Component {
             headerTitle: title,
             isListOpen: false,
         }, () => {
+            console.log('check');
             resetThenSet(id, key)
         });
     }
 
+    static getDerivedStateFromProps(nextProps) {
+        const { options, title } = nextProps;
+        const selectedItem = options.filter((item) => item.selected);
+
+        if (selectedItem.length) {
+            return {
+                headerTitle: selectedItem[0].title,
+            };
+        }
+        return { headerTitle: title };
+    }
+
     render() {
         const { isListOpen, headerTitle } = this.state;
-        const { options } = this.props;
+        const { options, toggleItem } = this.props;
 
         return (
             <div className="dd-wrapper">
@@ -47,17 +60,20 @@ class Dropdown extends React.Component {
                 </Button>
                 {
                     isListOpen &&
-                    <div className="dd-list">
-                        {options.map(list => <Button
+                    <ul className="dd-list">
+                        {options.map(list => <li
                             key={list.id}
-                            className="dd-list-item"
-                            clicked={() => this.selectItem(list)}>
-                            {list.title}
-                            {' '}
-                            {list.selected && <FontAwesome name="check" />}</Button>)}
-                    </div>
+                            onClick={() => toggleItem(list.id, list.key)}>
+                            <Button
+                                className="dd-list-item">
+                                {list.title}
+                                {' '}
+                                {list.selected && <FontAwesome name="check" />}
+                            </Button>
+                        </li>)
+                        }
+                    </ul>
                 }
-
             </div>
         )
     }

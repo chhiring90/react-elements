@@ -1,9 +1,9 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import Button from './Components/UI/Button/button';
-import Dropdown from './Components/UI/Dropdown/dropdown';
+import Dropdown from './Components/UI/DropdownHooks/DropdownMenu';
 import uuid from 'react-uuid';
 
-class App extends React.Component {
+class App extends Component {
   state = {
     location: [
       {
@@ -45,7 +45,7 @@ class App extends React.Component {
     ],
   };
 
-  resetThenSet(id, key) {
+  resetThenSet(id: string | number, key: string | number) {
     const temp = [...this.state[key]];
 
     temp.forEach((item) => (item.selected = false));
@@ -56,10 +56,27 @@ class App extends React.Component {
     });
   }
 
+  toggleItem(id: string | number, key: string | number) {
+    console.log(this.state.location);
+    const temp = [...this.state[key]];
+
+    temp[id].selected = !temp[id].selected;
+
+    this.setState({
+      [key]: temp,
+    });
+  }
+
   render() {
     return (
       <div>
-        <Dropdown options={this.state.location} title="Select Location" />
+        {/* <Dropdown
+          resetThenSet={this.resetThenSet}
+          options={this.state.location}
+          title="Select Location"
+          toggleItem={this.toggleItem}
+        /> */}
+        <Dropdown />
       </div>
     );
   }
