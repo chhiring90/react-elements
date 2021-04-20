@@ -1,0 +1,97 @@
+.progress-deck {
+  width: 100%;
+  padding: 50px 0;
+  max-width: 900px;
+  margin: 0 auto;
+
+  &__indicator {
+    margin: 0 0 30px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: space-between;
+    svg {
+      transform: translateY(1px);
+    }
+  }
+}
+
+.progress-step {
+  flex: 0 0 25%;
+  max-width: 25%;
+  position: relative;
+
+  &.active,
+  &.complete {
+    .progress-step__icon {
+      border-color: $green;
+
+      svg {
+        fill: $green;
+        animation: grow 0.2s forwards;
+      }
+    }
+  }
+
+  &.complete {
+    .progress-step__bar {
+      &:before {
+        animation: fillit 0.7s ease-in forwards;
+      }
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 10px;
+    border: 4px solid $grey-200;
+    border-radius: 50%;
+    transition: 0.4s ease-in-out;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      fill: $grey-100;
+    }
+
+    h3 {
+      color: $grey-200;
+    }
+  }
+
+  &__bar {
+    width: 100%;
+    max-width: 150px;
+    height: 6px;
+    border-radius: 15px;
+    display: flex;
+    background-color: $grey-200;
+    position: absolute;
+    right: 53%;
+    top: 32%;
+    transform: translate(130%, -50%);
+    overflow: hidden;
+
+    &:before {
+      content: "";
+      display: flex;
+      position: absolute;
+      z-index: 4;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      background-color: $green;
+    }
+  }
+}
