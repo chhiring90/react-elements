@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { BiUserCircle, BiCurrentLocation, BiMessageAltDetail, BiCheckCircle, BiCheck } from 'react-icons/bi';
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import { BiUserCircle, BiCurrentLocation, BiMessageAltDetail, BiCheckCircle } from 'react-icons/bi';
 
-import Card from './Card';
-import Button from './UI/Button';
+import ProgressIndicator from './ProgressIndicator';
+import ProgressButtons from './ProgressButtons';
+import ProgressCard from './ProgressCard';
+
 const progressContent = {
     steps: [
         {
@@ -64,38 +65,18 @@ const ProgressDeck = () => {
 
     return (
         <div className="progress-deck">
-            <ul className="progress-deck__indicator">
-                {steps.map((step, index) =>
-                    <li key={index}
-                        className={`progress-step ${activeIndex === index ? 'active' : 'inactive'} ${activeIndex > index ? 'complete' : 'incomplete'} ${ready ? 'ready' : null}`}>
-                        <span className="progress-step__icon">
-                            {activeIndex > index ? <BiCheck /> : step.icon}
-                        </span>
-                        <h3>{step.label}</h3>
-                        {steps.length - 1 > index ? <span className="progress-step__bar"></span> : null}
-                    </li>
-                )}
-            </ul>
-            {cardContent.map((text, index) => {
-                if (activeIndex === index) {
-                    return <Card key={index} text={text} />
-                }
-                return null;
-            })}
-            {(activeIndex > cardContent.length - 1) ?
-                <h3 className="text-center">Congratulation for completion!</h3> : null
-            }
-            <div className="progress-deck__btns">
-                {activeIndex !== 0 ?
-                    <Button
-                        clicked={prevHandler}>
-                        <FaAngleLeft />Previous</Button> : null}
-                {activeIndex !== steps.length ?
-                    <Button
-                        classes="btn ml-auto"
-                        clicked={nextHandler}>
-                        Next <FaAngleRight /></Button> : null}
-            </div>
+            <ProgressIndicator
+                steps={steps}
+                activeIndex={activeIndex}
+                ready={ready} />
+            <ProgressCard
+                cardContent={cardContent}
+                activeIndex={activeIndex} />
+            <ProgressButtons
+                activeIndex={activeIndex}
+                stepsLength={steps.length}
+                prevHandler={prevHandler}
+                nextHandler={nextHandler} />
         </div >
     )
 }

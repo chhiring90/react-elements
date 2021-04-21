@@ -34,15 +34,19 @@
 
       svg {
         fill: $green;
-        animation: grow 0.2s forwards;
+        animation: grow 0.4s ease forwards;
       }
+    }
+
+    h3 {
+      color: $green;
     }
   }
 
   &.complete {
     .progress-step__bar {
       &:before {
-        animation: fillit 0.7s ease-in forwards;
+        animation: fillit 0.7s ease-out forwards;
       }
     }
   }
@@ -63,10 +67,6 @@
       width: 24px;
       height: 24px;
       fill: $grey-100;
-    }
-
-    h3 {
-      color: $grey-200;
     }
   }
 
@@ -93,5 +93,10 @@
       bottom: 0;
       background-color: $green;
     }
+  }
+
+  h3 {
+    color: $grey-200;
+    font-size: 20px;
   }
 }
