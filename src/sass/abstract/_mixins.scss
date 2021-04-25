@@ -1,0 +1,16 @@
+@mixin make-col($size, $columns: $grid-columns) {
+  @if $size {
+    flex: 0 0 auto;
+    width: percentage($size / $columns);
+  } @else {
+    flex: 0 0 percentage($size / $columns);
+    max-width: percentage($size / $columns);
+  }
+}
+
+@for $i from 1 through $grid-columns {
+  @debug $i;
+
+  //   @each $breakpoint in map-keys($breakpoints) {
+  //   }
+}

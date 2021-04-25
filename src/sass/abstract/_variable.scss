@@ -14,3 +14,15 @@ $grey-100: #585858;
 $grey-200: #989898;
 $green-100: #b2e19f;
 $green-200: #8cd171;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1480px,
+);
+
+$grid-columns: 12;
+$grid-gutters: 30px;

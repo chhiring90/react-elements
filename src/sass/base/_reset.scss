@@ -32,3 +32,13 @@ h3 {
 .mr-auto {
   margin-left: auto !important;
 }
+
+a {
+  color: $green;
+  text-decoration: none;
+  display: inline-block;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

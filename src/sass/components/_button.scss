@@ -38,4 +38,17 @@
       background-color: darken($primary, 5%);
     }
   }
+
+  &--light {
+    background-color: $white;
+    color: $grey-100;
+    box-shadow: 0 2px 5px rgba($black, 0.2);
+    border-radius: 10px;
+
+    &:hover,
+    &.active {
+      color: $green;
+      background-color: $white;
+    }
+  }
 }

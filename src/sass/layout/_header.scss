@@ -1,0 +1,23 @@
+.header {
+  padding: 20px 0 0;
+  margin-bottom: 25px;
+
+  .container {
+    border-bottom: 1px solid $grey-200;
+  }
+
+  .logo {
+    display: flex;
+    font-size: 18px;
+    color: $green;
+    font-weight: 700;
+    align-items: center;
+    user-select: none;
+    padding-bottom: 20px;
+
+    svg {
+      max-width: 45px;
+      margin-right: 10px;
+    }
+  }
+}
